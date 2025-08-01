@@ -1,187 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Do You Love Me?</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      background-color: #ffebee;
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      touch-action: manipulation;
-    }
-
-    .gif-container {
-      width: 180px; /* Optimal for mobile */
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 20px;
-      border: 5px solid #ff4081;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .gif-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    h1 {
-      color: #d81b60;
-      font-size: 2rem;
-      margin: 15px 0;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    button {
-      padding: 12px 25px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-weight: bold;
-      min-width: 100px;
-    }
-
-    #yesBtn {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    #noBtn {
-      background-color: #f44336;
-      color: white;
-      position: relative;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      color: #ff4081;
-      animation: float 8s ease-in-out infinite;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      25% {
-        transform: translate(50vw, 20vh) rotate(10deg);
-      }
-      50% {
-        transform: translate(30vw, 40vh) rotate(-10deg);
-      }
-      75% {
-        transform: translate(-20vw, 30vh) rotate(5deg);
-      }
-    }
-
-    .message {
-      display: none;
-      font-size: 1.5rem;
-      color: #d81b60;
-      margin-top: 20px;
-      animation: pulse 1.5s infinite;
-      padding: 0 20px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            touch-action: manipulation;
+            background-image: url('wall.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 235, 238, 0.7); /* Semi-transparent pink overlay */
+            z-index: -1;
+        }
+        
+        .content {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 90%;
+        }
+        
+        .gif-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid #ff4081;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .gif-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            color: #d81b60;
+            font-size: 2rem;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .button-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            min-width: 100px;
+        }
+        
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        
+        #specialBtn {
+            background-color: #ff9800;
+            color: white;
+            margin-top: 10px;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4081;
+            animation: float 8s ease-in-out infinite;
+            user-select: none;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50vw, 20vh) rotate(10deg);
+            }
+            50% {
+                transform: translate(30vw, 40vh) rotate(-10deg);
+            }
+            75% {
+                transform: translate(-20vw, 30vh) rotate(5deg);
+            }
+        }
+        
+        .message {
+            display: none;
+            font-size: 1.5rem;
+            color: #d81b60;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+            padding: 0 20px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
-<div class="gif-container">
-  <img src="apaawa.gif" alt="Special Someone">
-</div>
-
-<h1>Do you love me Apaawa??</h1>
-
-<div class="buttons">
-  <button id="yesBtn">Yes</button>
-  <button id="noBtn">No</button>
-</div>
-
-<div class="message" id="message">I knew you'd say yes! ❤️ I love you too!</div>
-
-<div id="heartsContainer"></div>
-
-<script>
-  // Create floating hearts
-  const heartsContainer = document.getElementById('heartsContainer');
-  const heartCount = 6; // Reduced for mobile performance
-
-  for (let i = 0; i < heartCount; i++) {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '❤️';
-    heart.style.left = Math.random() * 90 + 'vw';
-    heart.style.top = Math.random() * 90 + 'vh';
-    heart.style.animationDuration = (6 + Math.random() * 6) + 's';
-    heart.style.animationDelay = (Math.random() * 5) + 's';
-    heartsContainer.appendChild(heart);
-  }
-
-  // Button interactions
-  const noBtn = document.getElementById('noBtn');
-  const yesBtn = document.getElementById('yesBtn');
-  const message = document.getElementById('message');
-
-  noBtn.addEventListener('mouseover', () => {
-    if (!message.style.display || message.style.display === 'none') {
-      moveButton(noBtn);
-    }
-  });
-
-  noBtn.addEventListener('touchstart', (e) => {
-    if (!message.style.display || message.style.display === 'none') {
-      e.preventDefault();
-      moveButton(noBtn);
-    }
-  }, {passive: false});
-
-  function moveButton(btn) {
-    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
-    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
-    btn.style.position = 'absolute';
-    btn.style.left = Math.max(20, x) + 'px';
-    btn.style.top = Math.max(20, y) + 'px';
-  }
-
-  yesBtn.addEventListener('click', () => {
-    message.style.display = 'block';
-    document.querySelector('.buttons').style.display = 'none';
-    document.querySelector('h1').style.display = 'none';
-  });
-</script>
+    <div class="content">
+        <div class="gif-container">
+            <img src="apaawa.gif" alt="Special Someone">
+        </div>
+        
+        <h1>Do you love me Apaawa??</h1>
+        
+        <div class="buttons">
+            <div class="button-row">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+            <button id="specialBtn">Special Message ❤️</button>
+        </div>
+        
+        <div class="message" id="message">I knew you'd say yes! ❤️ I love you too!</div>
+    </div>
+    
+    <div id="heartsContainer"></div>
+    
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        const heartCount = 6;
+        
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 90 + 'vw';
+            heart.style.top = Math.random() * 90 + 'vh';
+            heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            heartsContainer.appendChild(heart);
+        }
+        
+        // Button interactions
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const specialBtn = document.getElementById('specialBtn');
+        const message = document.getElementById('message');
+        
+        noBtn.addEventListener('mouseover', () => {
+            if (!message.style.display || message.style.display === 'none') {
+                moveButton(noBtn);
+            }
+        });
+        
+        noBtn.addEventListener('touchstart', (e) => {
+            if (!message.style.display || message.style.display === 'none') {
+                e.preventDefault();
+                moveButton(noBtn);
+            }
+        }, {passive: false});
+        
+        function moveButton(btn) {
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
+            btn.style.position = 'absolute';
+            btn.style.left = Math.max(20, x) + 'px';
+            btn.style.top = Math.max(20, y) + 'px';
+        }
+        
+        yesBtn.addEventListener('click', () => {
+            message.style.display = 'block';
+            document.querySelector('.buttons').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+        });
+        
+        specialBtn.addEventListener('click', () => {
+            // Create a new page with the special message
+            const specialMessage = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Special Message</title>
+                    <style>
+                        body {
+                            font-family: 'Arial', sans-serif;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            padding: 20px;
+                            text-align: center;
+                            background-image: url('wall.jpeg');
+                            background-size: cover;
+                            background-position: center;
+                            background-attachment: fixed;
+                        }
+                        body::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: rgba(255, 245, 247, 0.85);
+                            z-index: -1;
+                        }
+                        .message-container {
+                            max-width: 500px;
+                            background-color: white;
+                            padding: 30px;
+                            border-radius: 15px;
+                            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                            border: 2px solid #ff4081;
+                        }
+                        h1 {
+                            color: #d81b60;
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            font-size: 1.1rem;
+                            line-height: 1.6;
+                            color: #555;
+                        }
+                        .heart {
+                            color: #ff4081;
+                            font-size: 1.5rem;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="message-container">
+                        <h1>You're special to me. <span class="heart">❤</span></h1>
+                        <p>
+                            You are the only one who I wouldn't mind losing sleep for, 
+                            the only one who I can never get tired of talking to and 
+                            the only one who crosses my mind constantly throughout the day.<br><br>
+                            You are the only one who can make me smile without any intention 
+                            and affect my emotions with every action of yours. I can't explain 
+                            in words how much you mean to me but you're the one I'm afraid of 
+                            losing and the one I want to keep in my life.
+                        </p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            // Open in a new tab
+            const newWindow = window.open();
+            newWindow.document.write(specialMessage);
+        });
+    </script>
 </body>
 </html>
