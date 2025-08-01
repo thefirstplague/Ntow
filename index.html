@@ -1,251 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do You Love Me?</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            touch-action: manipulation;
-            background-image: url('wall.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 235, 238, 0.7);
-            z-index: -1;
-        }
-        
-        .content {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 90%;
-            transition: all 0.5s ease;
-        }
-        
-        .gif-container {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 5px solid #ff4081;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .gif-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        h1 {
-            color: #d81b60;
-            font-size: 2rem;
-            margin: 15px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            transition: all 0.5s ease;
-        }
-        
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-            width: 100%;
-            transition: all 0.5s ease;
-        }
-        
-        .button-row {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            width: 100%;
-        }
-        
-        button {
-            padding: 12px 25px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            min-width: 100px;
-        }
-        
-        #yesBtn {
-            background-color: #4caf50;
-            color: white;
-        }
-        
-        #noBtn {
-            background-color: #f44336;
-            color: white;
-            position: relative;
-        }
-        
-        #specialBtn {
-            background-color: #ff9800;
-            color: white;
-            margin-top: 10px;
-            display: none; /* Hidden by default */
-            animation: fadeIn 1s ease-in-out;
-            text-decoration: none;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        button:active {
-            transform: scale(0.95);
-        }
-        
-        .heart {
-            position: absolute;
-            font-size: 24px;
-            color: #ff4081;
-            animation: float 8s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(50vw, 20vh) rotate(10deg);
-            }
-            50% {
-                transform: translate(30vw, 40vh) rotate(-10deg);
-            }
-            75% {
-                transform: translate(-20vw, 30vh) rotate(5deg);
-            }
-        }
-        
-        .message {
-            display: none;
-            font-size: 1.5rem;
-            color: #d81b60;
-            margin-top: 20px;
-            animation: pulse 1.5s infinite;
-            padding: 0 20px;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      touch-action: manipulation;
+      background-image: url('img/wall.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 235, 238, 0.7);
+      z-index: -1;
+    }
+
+    .content {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 90%;
+      transition: all 0.5s ease;
+    }
+
+    .gif-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 5px solid #ff4081;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .gif-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      color: #d81b60;
+      font-size: 2rem;
+      margin: 15px 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      transition: all 0.5s ease;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      width: 100%;
+      transition: all 0.5s ease;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: bold;
+      min-width: 100px;
+    }
+
+    #yesBtn {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: relative;
+    }
+
+    #specialBtn {
+      background-color: #ff9800;
+      color: white;
+      margin-top: 10px;
+      display: none; /* Hidden by default */
+      animation: fadeIn 1s ease-in-out;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(50vw, 20vh) rotate(10deg);
+      }
+      50% {
+        transform: translate(30vw, 40vh) rotate(-10deg);
+      }
+      75% {
+        transform: translate(-20vw, 30vh) rotate(5deg);
+      }
+    }
+
+    .message {
+      display: none;
+      font-size: 1.5rem;
+      color: #d81b60;
+      margin-top: 20px;
+      animation: pulse 1.5s infinite;
+      padding: 0 20px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <div class="gif-container">
-            <img src="apaawa.gif" alt="Special Someone">
-        </div>
-        
-        <h1>Do you love me??</h1>
-        
-        <div class="buttons">
-            <div class="button-row">
-                <button id="yesBtn">Yes</button>
-                <button id="noBtn">No</button>
-            </div>
-            <a href="special.html" id="specialBtn">Special Message ❤️</a>
-        </div>
-        
-        <div class="message" id="message">I knew you'd say yes! ❤️ I love you too!</div>
+<div class="content">
+  <div class="gif-container">
+    <img src="img/apaawa.gif" alt="Special Someone">
+  </div>
+
+  <h1>Do you love me??</h1>
+
+  <div class="buttons">
+    <div class="button-row">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
     </div>
-    
-    <div id="heartsContainer"></div>
-    
-    <script>
-        // Create floating hearts
-        const heartsContainer = document.getElementById('heartsContainer');
-        const heartCount = 6;
-        
-        for (let i = 0; i < heartCount; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 90 + 'vw';
-            heart.style.top = Math.random() * 90 + 'vh';
-            heart.style.animationDuration = (6 + Math.random() * 6) + 's';
-            heart.style.animationDelay = (Math.random() * 5) + 's';
-            heartsContainer.appendChild(heart);
-        }
-        
-        // Button interactions
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const specialBtn = document.getElementById('specialBtn');
-        const message = document.getElementById('message');
-        
-        noBtn.addEventListener('mouseover', () => {
-            if (!message.style.display || message.style.display === 'none') {
-                moveButton(noBtn);
-            }
-        });
-        
-        noBtn.addEventListener('touchstart', (e) => {
-            if (!message.style.display || message.style.display === 'none') {
-                e.preventDefault();
-                moveButton(noBtn);
-            }
-        }, {passive: false});
-        
-        function moveButton(btn) {
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
-            btn.style.position = 'absolute';
-            btn.style.left = Math.max(20, x) + 'px';
-            btn.style.top = Math.max(20, y) + 'px';
-        }
-        
-        yesBtn.addEventListener('click', () => {
-            // Show the message
-            message.style.display = 'block';
-            
-            // Hide the yes/no buttons
-            document.querySelector('.button-row').style.display = 'none';
-            
-            // Show the special message button with a nice animation
-            setTimeout(() => {
-                specialBtn.style.display = 'block';
-            }, 500);
-            
-            // Optional: Change the question text
-            document.querySelector('h1').textContent = "I love you too!";
-        });
-    </script>
+    <a href="special.html" id="specialBtn">Special Message ❤️</a>
+  </div>
+
+  <div class="message" id="message">I knew you'd say yes! ❤️ I love you too!</div>
+</div>
+
+<div id="heartsContainer"></div>
+
+<script>
+  // Create floating hearts
+  const heartsContainer = document.getElementById('heartsContainer');
+  const heartCount = 6;
+
+  for (let i = 0; i < heartCount; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 90 + 'vw';
+    heart.style.top = Math.random() * 90 + 'vh';
+    heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+    heart.style.animationDelay = (Math.random() * 5) + 's';
+    heartsContainer.appendChild(heart);
+  }
+
+  // Button interactions
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const specialBtn = document.getElementById('specialBtn');
+  const message = document.getElementById('message');
+
+  noBtn.addEventListener('mouseover', () => {
+    if (!message.style.display || message.style.display === 'none') {
+      moveButton(noBtn);
+    }
+  });
+
+  noBtn.addEventListener('touchstart', (e) => {
+    if (!message.style.display || message.style.display === 'none') {
+      e.preventDefault();
+      moveButton(noBtn);
+    }
+  }, {passive: false});
+
+  function moveButton(btn) {
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
+    btn.style.position = 'absolute';
+    btn.style.left = Math.max(20, x) + 'px';
+    btn.style.top = Math.max(20, y) + 'px';
+  }
+
+  yesBtn.addEventListener('click', () => {
+    // Show the message
+    message.style.display = 'block';
+
+    // Hide the yes/no buttons
+    document.querySelector('.button-row').style.display = 'none';
+
+    // Show the special message button with a nice animation
+    setTimeout(() => {
+      specialBtn.style.display = 'block';
+    }, 500);
+
+    // Optional: Change the question text
+    document.querySelector('h1').textContent = "I love you too!";
+  });
+</script>
 </body>
 </html>
